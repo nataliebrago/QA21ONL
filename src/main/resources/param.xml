@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Main Suite">
-    <parameter name="login-value" value="user"></parameter>
-    <parameter name="psw-value" value="1234"></parameter>
+    <parameter name="value-a" value="4"></parameter>
+    <parameter name="value-b" value="2"></parameter>
+
+    <parameter name="value-a-double" value="5.5"></parameter>
+    <parameter name="value-b-double" value="1.1"></parameter>
 
     <test name="Smoke">
         <classes>
-            <class name="ParamTest"/>
+            <class name="CalculatorTestHW"/>
         </classes>
     </test>
 </suite>

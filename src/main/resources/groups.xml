@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Main Suite">
-    <test name="Smoke">
+<suite name="Group Suite">
+    <test name="Groups">
         <groups>
-            <define name="Group 1">
+            <define name="Group smoke">
                 <include name="smoke"/>
             </define>
-            <define name="Group 2">
+            <define name="Group regression">
                 <include name="regression"/>
             </define>
-            <define name="Group 3">
-                <include name="smoke"/>
-                <include name="regression"/>
+            <define name="Group positive">
+                <include name="positive"/>
+            </define>
+            <define name="Group negative">
+                <include name="negative"/>
             </define>
             <run>
-                <include name="Group 1"/>
-                <include name="Group 2"/>
+                <include name="Group smoke"/>
+                <include name="Group regression"/>
+                <include name="Group positive"/>
             </run>
         </groups>
         <classes>
-            <class name="GroupsTest"/>
-            <class name="GroupsTest"/>
-            <class name="GroupsTest"/>
+            <class name="CalculatorTestHW"/>
+            <class name="CalculatorTestHW"/>
+            <class name="CalculatorTestHW"/>
         </classes>
     </test>
 </suite>

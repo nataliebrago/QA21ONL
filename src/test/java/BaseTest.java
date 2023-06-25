@@ -1,11 +1,10 @@
 import org.testng.annotations.*;
 @Listeners(Listener.class)
 public class BaseTest {
-    protected Calculator calculator;
+    protected Calculator calculator = new Calculator();
 
     @BeforeClass
     public void beforeClass() {
-        calculator = new Calculator();
     }
 
     @BeforeGroups
@@ -20,7 +19,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-
     }
 
     @BeforeSuite

@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Main Suite">
-    <test name="Smoke">
+    <test name="Homework">
         <classes>
-            <class name="UnitTestA">
-                <methods>
-                    <include name="initTest_1"/>
-                </methods>
-            </class>
-            <class name="CalcTest"/>
-            <class name="DependencyTest"/>
+            <class name="CalculatorTestHW">
+                  </class>
         </classes>
     </test>
-    <test name="Regression">
+    <test name="ClassWork">
         <classes>
-            <class name="PriorityTest"/>
-            <class name="UnitTestB">
-                <methods>
-                    <exclude name="initTest_4"/>
-                </methods>
-            </class>
+            <class name="CalcTest"/>
         </classes>
     </test>
 </suite>

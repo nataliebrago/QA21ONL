@@ -3,21 +3,19 @@
 <suite name="Main Suite">
     <test name="Smoke">
         <classes>
-            <class name="UnitTestA">
+            <class name="CalculatorTestHW">
                 <methods>
-                    <include name="initTest_1"/>
+                    <include name="test1_int"/>
+                    <include name="test1_double"/>
                 </methods>
             </class>
-            <class name="CalcTest"/>
-            <class name="DependencyTest"/>
         </classes>
     </test>
     <test name="Regression">
         <classes>
-            <class name="PriorityTest"/>
-            <class name="UnitTestB">
+            <class name="CalculatorTestHW">
                 <methods>
-                    <exclude name="initTest_4"/>
+                    <exclude name="test1_int"/>
                 </methods>
             </class>
         </classes>

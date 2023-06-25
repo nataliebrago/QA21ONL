@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class CalcTest extends BaseTest {
-    @Test
+    @Test(groups = "positive")
     public void sumTest_1() {
         int expectedValue = 5;
         int actualValue = calculator.sum(2, 3);
