@@ -1,10 +1,13 @@
 import factory.BrowserFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.configuration.ReadProperties;
+
+import java.util.List;
 
 public class BasicLocatorsTest {
     protected WebDriver driver;
@@ -21,30 +24,41 @@ public class BasicLocatorsTest {
     }
 
     @Test
-    public void basicLocatorsTest() {
+    public void basicLocatorsTest() throws InterruptedException {
         driver.get(ReadProperties.getUrl());
 
-        // Find webElement by ID
-        driver.findElement(By.id("name")).sendKeys(ReadProperties.username());
+        //клик на гиперссылку вход
+        List<WebElement> liChilds = driver.findElement(By.id("nav156026854")).findElements(By.tagName("li"));
+        liChilds.get(5).click();
 
-        // Find webElement by Name
+        Thread.sleep(3000);
+        //клик на гиперссылку "зарегестрироваться"
+        driver.findElement(By.partialLinkText("Зарегист")).click();
+
+        Thread.sleep(3000);
+        //клик на гиперссылку "Уже зарегестрированы"
+        driver.findElement(By.partialLinkText("Войти тут")).click();
+
+        Thread.sleep(3000);
+        //клик на гиперссылку "Восстановить пароль"
+        driver.findElement(By.linkText("Восстановить пароль")).click();
+
+        Thread.sleep(3000);
+        //переход обратно
+        driver.navigate().back();
+
+        //ввод email
+        driver.findElement(By.name("login")).sendKeys(ReadProperties.username());
+
+        //ввод пароля
         driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
 
         // Find webElement by Tag
         driver.findElement(By.tagName("button")).click();
-    }
 
-    @Test
-    public void basicLocatorsTest_2() {
-        driver.get(ReadProperties.getUrl());
-
-        // Find webElement by LinkText
-        driver.findElement(By.linkText("Forgot your password?")).click();
-
-        // Find webElement by ClassName
-        driver.findElement(By.className("forgot_passwordpage-request-cancel")).click();
-
-        // Find webElement by PartialLinkText
-        driver.findElement(By.partialLinkText("your password?")).click();
+        Thread.sleep(2000);
+        //клик на гиперссылку Курс "Углубленное тестирование ПО"
+        List<WebElement> aChilds = driver.findElement(By.className("t-records")).findElements(By.tagName("a"));
+        aChilds.get(0).click();
     }
 }
