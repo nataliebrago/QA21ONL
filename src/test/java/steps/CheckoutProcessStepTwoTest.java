@@ -8,6 +8,7 @@ public class CheckoutProcessStepTwoTest extends BaseStepHW {
     public CheckoutProcessStepTwoTest(WebDriver driver) {
         super(driver);
     }
+
     public CheckoutProcessStepFinishPageHW finishCheckoutProcess() {
         mCheckoutProcessStepTwoPageHW.getFinishButton().click();
         return mCheckoutProcessStepFinishPageHW;

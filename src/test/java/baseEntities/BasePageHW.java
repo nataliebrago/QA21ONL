@@ -7,13 +7,17 @@ import utils.configuration.ReadProperties;
 public abstract class BasePageHW {
 
     protected WebDriver driver;
+
     public BasePageHW(WebDriver driver) {
         this.driver = driver;
     }
+
     public void openPageByUrl(String pagePath) {
         driver.get(ReadProperties.getUrl() + pagePath);
     }
+
     protected abstract By getPageIdentifier();
+
     public boolean isPageOpened() {
         return driver.findElement(getPageIdentifier()).isDisplayed();
     }

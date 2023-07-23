@@ -15,6 +15,7 @@ public class ProductListStepHW extends BaseStepHW {
         mProductListPageHW.getAddToCartButton().click();
         return mProductListPageHW;
     }
+
     public CartPageHW navigateToCartHW() {
         mProductListPageHW.getOpenCartButton().click();
         return mCartPageHW;

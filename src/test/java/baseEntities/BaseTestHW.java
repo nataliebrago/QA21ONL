@@ -31,7 +31,7 @@ public class BaseTestHW {
 
     @AfterMethod
     public void tearDown() {
-         mWebDriver.quit();
+        mWebDriver.quit();
     }
 }
 
