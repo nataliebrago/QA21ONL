@@ -50,7 +50,6 @@ public class BrowserFactory {
         chromeoptions.addArguments("--start-maximized");
         chromeoptions.addArguments("--incognito");
         return chromeoptions;
-
     }
 
     public FirefoxOptions getFirefoxOptions() {
