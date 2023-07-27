@@ -50,12 +50,14 @@ public class CalcTest extends BaseTest {
         Assert.assertEquals(actualValue, expectedValue, "Значение неверное");
 
     }
+
     @Test(expectedExceptions = NullPointerException.class)
     public void exceptionTest() {
         List list =null;
         int size = list.size();
 
     }
+
     @Test(dataProvider = "Integer data for div test", dataProviderClass= DataProviderForCalcInt.class, threadPoolSize = 3)
     public void DataProviderTestInt(int a, int b, int expectedValue) {
         Assert.assertEquals(calculator.sum (a,b),expectedValue, "Значение неверное");

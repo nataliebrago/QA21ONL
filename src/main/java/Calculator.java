@@ -13,16 +13,10 @@ public class Calculator {
         return a + b;
     }
 
-    public int divInt(int a, int b){
-        if ( b == 0) {
-            throw new ArithmeticException("Недопустимая операция");
-        }
+    public int div(int a, int b){
         return a / b;
     }
-    public double divDouble(double a, double b){
-        if (b == 0) {
-            throw new ArithmeticException("Недопустимая операция");
-        }
+    public double div(double a, double b){
         return (a / b);
     }
 }
