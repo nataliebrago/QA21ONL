@@ -14,10 +14,10 @@ public class ActionTests extends BaseTest {
 
     @Test
     public void hoverTest() {
-        driver.get("http://the-internet.herokuapp.com/hovers");
+        mWebDriver.get("http://the-internet.herokuapp.com/hovers");
 
-        WaitService waitService = new WaitService(driver);
-        Actions actions = new Actions(driver);
+        WaitService waitService = new WaitService(mWebDriver);
+        Actions actions = new Actions(mWebDriver);
 
         List<WebElement> targetElements = waitService.waitForAllVisibleElementsLocatedBy(By.className("figure"));
 
@@ -32,9 +32,9 @@ public class ActionTests extends BaseTest {
 
     @Test
     public void uploadFileTest() throws InterruptedException {
-        driver.get("http://the-internet.herokuapp.com/upload");
+        mWebDriver.get("http://the-internet.herokuapp.com/upload");
 
-        WaitService waitService = new WaitService(driver);
+        WaitService waitService = new WaitService(mWebDriver);
 
         WebElement fileUploadElement = waitService.waitForExists(By.xpath("//form/input[@type='file']"));
         String pathToFile = ActionTests.class.getClassLoader().getResource("download.jpeg").getPath();
