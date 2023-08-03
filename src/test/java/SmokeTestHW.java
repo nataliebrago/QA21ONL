@@ -9,31 +9,32 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SmokeTestHW {
-        protected WebDriver driver;
+    protected WebDriver driver;
 
-        @BeforeMethod
-        public void setUp() {
-            BrowserFactory browserFactory = new BrowserFactory();
-            driver = browserFactory.getDriver();
-        }
+    @BeforeMethod
+    public void setUp() {
+        BrowserFactory browserFactory = new BrowserFactory();
+        driver = browserFactory.getDriver();
+    }
+
     @Test
     public void ElectWarmFloorCalculator() {
         initDriverUrl();
         initFloorParam();
         initExpandLists();
 
-        WebElement calculateButton= driver.findElement(By.name("button"));
+        WebElement calculateButton = driver.findElement(By.name("button"));
         calculateButton.click();
         checkTestEquals();
     }
 
-    private void initDriverUrl(){
+    private void initDriverUrl() {
         driver.get("https://kermi-fko.ru/raschety/Calc-Rehau-Solelec.aspx");
         System.out.println(driver.getCurrentUrl());
         System.out.println(driver.getTitle());
     }
 
-    private void initFloorParam(){
+    private void initFloorParam() {
         WebElement widthInput = driver.findElement(By.id("el_f_width"));
         WebElement lengthInput = driver.findElement(By.id("el_f_lenght"));
         WebElement heatLossesInput = driver.findElement(By.id("el_f_losses"));
@@ -43,7 +44,7 @@ public class SmokeTestHW {
         heatLossesInput.sendKeys("300");
     }
 
-    private void initExpandLists(){
+    private void initExpandLists() {
         WebElement expandListOne = driver.findElement(By.id("room_type"));
         Select selectRoomType = new Select(expandListOne);
         WebElement expandListTwo = driver.findElement(By.id("heating_type"));
@@ -53,16 +54,13 @@ public class SmokeTestHW {
         selectHeatingType.selectByValue("3");
     }
 
-
-    private void checkTestEquals(){
-
+    private void checkTestEquals() {
         WebElement valueOne = driver.findElement(By.id("floor_cable_power"));
         WebElement valueTwo = driver.findElement(By.id("spec_floor_cable_power"));
 
         Assert.assertEquals(valueOne.getAttribute("value"), "167");
         Assert.assertEquals(valueTwo.getAttribute("value"), "2");
     }
-
 
     @AfterMethod
     public void tearDown() {
