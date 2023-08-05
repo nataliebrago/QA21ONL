@@ -1,6 +1,8 @@
 package tests;
 
 import baseEntities.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,22 +31,22 @@ public class ActionTests extends BaseTest {
 
         Assert.assertTrue(waitService.waitForElementInvisible(targetElements.get(0)));
     }
-}
-/*
+
+
     @Test
+    @Severity(SeverityLevel.MINOR)
     public void uploadFileTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/upload");
 
         WaitService waitService = new WaitService(driver);
 
         WebElement fileUploadElement = waitService.waitForExists(By.xpath("//form/input[@type='file']"));
-        String pathToFile = ActionTests.class.getClassLoader().getResource("download.jpeg").getPath();
-        System.out.println(pathToFile);
-        fileUploadElement.sendKeys(pathToFile);
+        String pathToFile = ActionTests.class.getClassLoader().getResource("photo_2023.jpg").getPath();
+        fileUploadElement.sendKeys(pathToFile.substring(1,pathToFile.length()));
 
         waitService.waitForVisibilityLocatedBy(By.id("file-submit")).submit();
 
         Thread.sleep(5000);
     }
 }
-*/
+
