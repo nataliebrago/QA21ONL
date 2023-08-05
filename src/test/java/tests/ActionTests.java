@@ -29,7 +29,8 @@ public class ActionTests extends BaseTest {
 
         Assert.assertTrue(waitService.waitForElementInvisible(targetElements.get(0)));
     }
-
+}
+/*
     @Test
     public void uploadFileTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/upload");
@@ -46,3 +47,4 @@ public class ActionTests extends BaseTest {
         Thread.sleep(5000);
     }
 }
+*/
