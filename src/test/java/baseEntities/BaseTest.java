@@ -7,26 +7,24 @@ import org.testng.annotations.BeforeMethod;
 import steps.LoginStep;
 import utils.configuration.ReadProperties;
 
-
 public class BaseTest {
-        protected WebDriver driver;
+    protected WebDriver driver;
 
-        protected LoginStep loginStep;
+    protected LoginStep loginStep;
 
-        @BeforeMethod
-        public void setUp() {
-            BrowserFactory browserFactory = new BrowserFactory();
-            driver = browserFactory.getDriver();
+    @BeforeMethod
+    public void setUp() {
+        BrowserFactory browserFactory = new BrowserFactory();
+        driver = browserFactory.getDriver();
 
-            loginStep = new LoginStep(driver);
+        loginStep = new LoginStep(driver);
 
-            driver.get(ReadProperties.getUrl());
-        }
-
-        @AfterMethod
-        public void tearDown() {
-            driver.quit();
-        }
-
+        driver.get(ReadProperties.getUrl());
     }
 
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
+}
