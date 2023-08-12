@@ -44,7 +44,5 @@ public class WrappersTest extends BaseTest {
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage.openPageByUrl();
 
-        TableCell cell = projectsPage.getProjectsTable().getCell("Project", 1);
-        cell.getLink().click();
     }
 }

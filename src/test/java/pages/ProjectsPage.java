@@ -32,8 +32,5 @@ public class ProjectsPage extends BasePage {
     public WebElement getHeaderTitle() {
         return driver.findElement(headerTitleLabelLocator);
     }
-
-    public Table getProjectsTable() {
-        return new Table(driver, projectsTableLocator);
-    }
 }
+
