@@ -38,7 +38,7 @@ public class BaseTest {
         if (!result.isSuccess()) {
             System.out.println("Make screenshot");
         }
-        driver.quit();
+        //driver.quit();
     }
 
 }

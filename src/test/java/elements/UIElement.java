@@ -130,4 +130,8 @@ public class UIElement implements WebElement {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", webElement);
     }
 
+    public UIElement findUIElement(By by){
+        return new UIElement(driver, webElement.findElement(by));
+    }
+
 }
