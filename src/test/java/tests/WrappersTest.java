@@ -1,50 +1,52 @@
 package tests;
 
 import baseEntities.BaseTest;
-import elements.TableCell;
+import elements.CheckBox;
+import elements.RadioButton;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import pages.ProjectsPage;
+import pages.CheckBoxPage;
+import pages.RadioButtonPage;
 import utils.configuration.ReadProperties;
 
 public class WrappersTest extends BaseTest {
 
     @Test
-    public void testName() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+    public void checkBoxPageTest() throws InterruptedException {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        CheckBoxPage mCheckBoxPage = new CheckBoxPage(driver);
+        mCheckBoxPage.openPageByUrl();
 
-        WebElement checkBox1 = driver.findElement(By.cssSelector("#checkboxes input"));
+        CheckBox checkBox = mCheckBoxPage.getProjectCheckBox();
+        checkBox.setFlagCheckBox(true);
 
+        Thread.sleep(3000);
+        checkBox.setFlagCheckBox(false);
     }
-
-    private void setCheckBox(WebElement webElement) {
-        if (!webElement.isSelected()) {
-            webElement.click();
-        }
-    }
-
-    private void removeCheckBox(WebElement webElement) {
-        if (!webElement.isSelected()) {
-            webElement.click();
-        }
-
-        WebElement el1 = driver.findElement(By.cssSelector("class1")).findElement(By.cssSelector("class2"));
-        WebElement el2 = webElement.findElement(By.cssSelector("class1")).findElement(By.cssSelector("class2"));
-    }
-
 
     @Test
-    public void tableTest() {
-        loginStep.successLogin(
-                ReadProperties.username(),
-                ReadProperties.password()
-        );
+    public void radioButtonPageTest() throws InterruptedException {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        RadioButtonPage mRadioButtonPage = new RadioButtonPage(driver);
+        mRadioButtonPage.openPageByUrl();
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.openPageByUrl();
+        RadioButton mRadioButton = mRadioButtonPage.getRadioButtonElements(By.name("suite_mode"));
+        mRadioButton.selectByIndex(0);
+        Thread.sleep(2000);
+        mRadioButton.selectByValue("2");
+        Thread.sleep(2000);
+        mRadioButton.selectByText("Use multiple test suites to manage cases");
+    }
 
-        TableCell cell = projectsPage.getProjectsTable().getCell("Project", 1);
-        cell.getLink().click();
+    @Test
+    public void radioButtonPageTwoTest() throws InterruptedException {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        RadioButtonPage mRadioButtonPage = new RadioButtonPage(driver);
+        mRadioButtonPage.openPageBySecondUrl();
+
+        RadioButton mRadioButton = mRadioButtonPage.getRadioButtonElements(By.name("invite"));
+        mRadioButton.selectByText("Manually specify password (no invitation is sent)");
+        Thread.sleep(2000);
+        mRadioButton.selectByValue("1");
     }
 }
