@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import steps.LoginStep;
 import utils.configuration.ReadProperties;
 
-public class BaseTest {
+public class BaseTest{
     protected WebDriver driver;
 
     protected LoginStep loginStep;

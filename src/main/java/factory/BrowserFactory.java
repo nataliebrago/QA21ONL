@@ -9,48 +9,52 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.configuration.ReadProperties;
 
-public class BrowserFactory {
+import java.time.Duration;
+
+public class BrowserFactory  {
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
 
     public BrowserFactory() {
         switch (ReadProperties.browserName().toLowerCase()) {
-            case "chrome":
+            case "chrome" :
                 driverManagerType = DriverManagerType.CHROME;
-                WebDriverManager.getInstance(driverManagerType).setup();
+                //WebDriverManager.getInstance(driverManagerType).setup();
+                //WebDriverManager.chromedriver().driverVersion("114.0.5735.90").setup();
 
-                driver = new ChromeDriver(getOptions());
+                driver = new ChromeDriver(getChromeOptions());
                 break;
             case "firefox":
                 driverManagerType = DriverManagerType.FIREFOX;
                 WebDriverManager.getInstance(driverManagerType).setup();
+
                 driver = new FirefoxDriver(getFirefoxOptions());
                 break;
             default:
-                System.out.println("Browser" + ReadProperties.browserName() + "is not supported");
+                System.out.println("Browser " + ReadProperties.browserName() + " is not supported.");
                 break;
         }
     }
 
     public WebDriver getDriver() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(0));
         driver.manage().window().maximize();
-
         driver.manage().deleteAllCookies();
+
         return this.driver;
     }
 
+    public ChromeOptions getChromeOptions() {
+        ChromeOptions chromeOptions = new ChromeOptions();
 
-    public ChromeOptions getOptions() {
-        ChromeOptions chromeoptions = new ChromeOptions();
+        chromeOptions.setHeadless(false);
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--silent");
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--incognito");
 
-        chromeoptions.setHeadless(false);
-        chromeoptions.addArguments("--disable-gpu");
-        chromeoptions.addArguments("--ignore-certificate-errors");
-        chromeoptions.addArguments("--silent");
-        chromeoptions.addArguments("--start-maximized");
-        chromeoptions.addArguments("--incognito");
-        return chromeoptions;
-
+        return chromeOptions;
     }
 
     public FirefoxOptions getFirefoxOptions() {
@@ -62,7 +66,7 @@ public class BrowserFactory {
         firefoxOptions.addArguments("--silent");
         firefoxOptions.addArguments("--start-maximized");
         firefoxOptions.addArguments("--incognito");
-        return firefoxOptions;
 
+        return firefoxOptions;
     }
 }
