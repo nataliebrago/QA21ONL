@@ -17,18 +17,9 @@ public abstract class BasePageHW {
 
         PageFactory.initElements(driver, this);
     }
-
-    public void openPageByUrl(String pagePath) {
-        driver.get(ReadProperties.getUrl() + pagePath);
-    }
-
     protected abstract By getPageIdentifier();
 
     public boolean isPageOpened() {
         return driver.findElement(getPageIdentifier()).isDisplayed();
-    }
-
-    public void updateElements() {
-        PageFactory.initElements(driver, this);
     }
 }

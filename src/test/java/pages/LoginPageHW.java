@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePageHW;
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,15 +24,9 @@ public class LoginPageHW extends BasePageHW {
         return By.id("login-button");
     }
 
-    public void login(String username, String psw) {
-        userNameButton.sendKeys(username);
-        passwordButton.sendKeys(psw);
-        loginButton.click();
-    }
-
-    public ProductListPageHW loginAction(String usernameHW, String pswHW) {
-        userNameButton.sendKeys(usernameHW);
-        passwordButton.sendKeys(pswHW);
+    public ProductListPageHW loginAction(User user) {
+        userNameButton.sendKeys(user.getUserName());
+        passwordButton.sendKeys(user.getPassword());
         loginButton.click();
         return new ProductListPageHW(driver);
     }
