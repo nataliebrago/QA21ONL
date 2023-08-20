@@ -20,7 +20,6 @@ public class BrowserFactory {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
                 WebDriverManager.getInstance(driverManagerType).setup();
-
                 driver = new ChromeDriver(getOptions());
                 break;
             case "firefox":

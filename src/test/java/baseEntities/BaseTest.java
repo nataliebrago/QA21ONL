@@ -7,16 +7,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import steps.LoginStep;
+import steps.LoginStepHW;
 import utils.InvokedListener;
 import utils.configuration.ReadProperties;
 
 @Listeners(InvokedListener.class)
-//@Listeners(Listener.class)
 public class BaseTest {
     protected WebDriver driver;
 
-    protected LoginStep loginStep;
+    protected LoginStepHW loginStep;
 
     @BeforeMethod
     public void setUp(ITestContext iTestContext) {
@@ -24,7 +23,7 @@ public class BaseTest {
         driver = browserFactory.getDriver();
         this.setDriverToContext(iTestContext, driver);
 
-        loginStep = new LoginStep(driver);
+        loginStep = new LoginStepHW(driver);
 
         driver.get(ReadProperties.getUrl());
     }

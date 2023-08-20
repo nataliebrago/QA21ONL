@@ -12,12 +12,12 @@ public class ProductListStepHW extends BaseStepHW {
     }
 
     public ProductListPageHW addToCartHW() {
-        mProductListPageHW.getAddToCartButton().click();
+        mProductListPageHW.addToCartRedShirtButton.click();
         return mProductListPageHW;
     }
 
     public CartPageHW navigateToCartHW() {
-        mProductListPageHW.getOpenCartButton().click();
+        mProductListPageHW.openCartButton.click();
         return mCartPageHW;
     }
 }

@@ -10,7 +10,7 @@ public class CheckoutProcessFinishTest extends BaseStepHW {
     }
 
     public CheckoutProcessStepFinishPageHW completeHeaderIsDisplayed() {
-        mCheckoutProcessStepFinishPageHW.getCompleteHeader().isDisplayed();
+        mCheckoutProcessStepFinishPageHW.completeHeader.isDisplayed();
         return mCheckoutProcessStepFinishPageHW;
     }
 }

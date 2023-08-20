@@ -16,7 +16,7 @@ public class CheckoutProcessStepOneTest extends BaseStepHW {
     }
 
     public CheckoutProcessStepTwoPageHW continueCheckout() {
-        mCheckoutProcessStepOnePageHW.getContinueButton().click();
+        mCheckoutProcessStepOnePageHW.continueButton.click();
         return mCheckoutProcessStepTwoPageHW;
     }
 }

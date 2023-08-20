@@ -10,7 +10,7 @@ public class CartTestHW extends BaseStepHW {
     }
 
     public CheckoutProcessStepOnePageHW navigateCheckoutHW() {
-        mCartPageHW.getCheckoutButton().click();
+        mCartPageHW.checkoutButtonLocator.click();
         return mCheckoutProcessStepOnePageHW;
     }
 }

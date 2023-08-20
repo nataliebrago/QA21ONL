@@ -10,7 +10,7 @@ public class CheckoutProcessStepTwoTest extends BaseStepHW {
     }
 
     public CheckoutProcessStepFinishPageHW finishCheckoutProcess() {
-        mCheckoutProcessStepTwoPageHW.getFinishButton().click();
+        mCheckoutProcessStepTwoPageHW.finishButtonLocator.click();
         return mCheckoutProcessStepFinishPageHW;
     }
 }
