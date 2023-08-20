@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import steps.LoginStep;
 import utils.configuration.ReadProperties;
 
-public class LoginTest  {
+public class LoginTest extends BaseTest  {
 
     @Test
     public void successLoginTest() {

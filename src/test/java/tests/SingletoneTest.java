@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import steps.LoginStep;
 
-public class SingletoneTest  {
+public class SingletoneTest extends BaseTest  {
 
     @Test
     public void successLoginTest() {
