@@ -5,9 +5,9 @@ import utils.configuration.ReadProperties;
 
 public class DataHelper {
     public static User getUser() {
-        User user = new User();
-        user.setUserName(ReadProperties.getNameUser());
-        user.setPassword(ReadProperties.getPasswordUser());
-        return user;
+        return new User.Builder()
+                .withUserName(ReadProperties.getNameUser())
+                .withPassword((ReadProperties.getPasswordUser()))
+                .build();
     }
-    }
+}

@@ -10,11 +10,6 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -42,5 +37,27 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(getUserName(), getPassword());
+    }
+
+    public static class Builder {
+        private User mUser;
+
+        public Builder() {
+            this.mUser = new User();
+        }
+
+        public Builder withUserName(String userName) {
+            mUser.userName = userName;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            mUser.password = password;
+            return this;
+        }
+
+        public User build() {
+            return mUser;
+        }
     }
 }
