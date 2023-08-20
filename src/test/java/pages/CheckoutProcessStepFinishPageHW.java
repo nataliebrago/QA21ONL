@@ -19,4 +19,6 @@ public class CheckoutProcessStepFinishPageHW extends BasePageHW {
         return By.xpath("//span[contains(@class, 'title') and contains(text(), 'Checkout: Complete!')]");
     }
 
+
+
 }

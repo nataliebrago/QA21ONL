@@ -28,4 +28,11 @@ public class LoginPageHW extends BasePageHW {
         passwordButton.sendKeys(psw);
         loginButton.click();
     }
+
+    public ProductListPageHW loginAction(String usernameHW, String pswHW) {
+        userNameButton.sendKeys(usernameHW);
+        passwordButton.sendKeys(pswHW);
+        loginButton.click();
+        return new ProductListPageHW(driver);
+    }
 }

@@ -22,4 +22,13 @@ public class ProductListPageHW extends BasePageHW {
     protected By getPageIdentifier() {
         return  By.xpath("//span[contains(@class, 'title') and contains(text(), 'Products')]");
     }
+
+    public ProductListPageHW addToCartAction() {
+        addToCartRedShirtButton.click();
+        return new ProductListPageHW(driver);
+    }
+    public CartPageHW openCartAction() {
+        openCartButton.click();
+        return new CartPageHW(driver);
+    }
 }

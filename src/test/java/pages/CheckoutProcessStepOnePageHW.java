@@ -38,9 +38,21 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
         zipOrPostalCodeInput.sendKeys(value);
     }
 
+
+
     public void setInformationAboutPerson() {
         setFirstName("Nataly");
         setLastName("Brago");
         setPostalCode("224024");
+    }
+
+    public CheckoutProcessStepOnePageHW fillingInWithValidDataAction() {
+        setInformationAboutPerson();
+        return new CheckoutProcessStepOnePageHW(driver);
+    }
+
+    public CheckoutProcessStepTwoPageHW continueCheckout(){
+        continueButton.click();
+        return new CheckoutProcessStepTwoPageHW(driver);
     }
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutProcessStepTwoPageHW extends BasePageHW {
 
     @FindBy(id = "finish")
-    public WebElement finishButtonLocator;
+    public WebElement finishButton;
 
     public CheckoutProcessStepTwoPageHW(WebDriver driver) {
         super(driver);
@@ -17,6 +17,10 @@ public class CheckoutProcessStepTwoPageHW extends BasePageHW {
 
     @Override
     protected By getPageIdentifier() {
-        return  By.xpath("//span[contains(@class, 'title') and contains(text(), 'Checkout: Overview')]");
+        return By.xpath("//span[contains(@class, 'title') and contains(text(), 'Checkout: Overview')]");
+    }
+
+    public void finishCheckoutProcess() {
+        finishButton.click();
     }
 }

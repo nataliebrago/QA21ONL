@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class CartPageHW extends BasePageHW {
 
     @FindBy (id = "checkout")
-    public WebElement checkoutButtonLocator;
+    public WebElement checkoutButton;
 
     public CartPageHW(WebDriver driver) {
         super(driver);
@@ -18,5 +18,10 @@ public class CartPageHW extends BasePageHW {
     @Override
     protected By getPageIdentifier() {
         return By.xpath("//span[contains(@class, 'title') and contains(text(), 'Your Cart')]");
+    }
+
+    public CheckoutProcessStepOnePageHW checkoutAction() {
+        checkoutButton.click();
+        return new CheckoutProcessStepOnePageHW(driver);
     }
 }
