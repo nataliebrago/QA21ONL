@@ -48,11 +48,15 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
 
     public CheckoutProcessStepOnePageHW fillingInWithValidDataAction() {
         setInformationAboutPerson();
+        logger.info("Success set information : FirstName - " + firstNameInput.getAttribute("value") +
+                "  LastName - " + lastNameInput.getAttribute("value") +
+                "  PostalCode - " + zipOrPostalCodeInput.getAttribute("value"));
         return new CheckoutProcessStepOnePageHW(driver);
     }
 
     public CheckoutProcessStepTwoPageHW continueCheckout(){
         continueButton.click();
+        logger.info("Success continue checkout");
         return new CheckoutProcessStepTwoPageHW(driver);
     }
 }

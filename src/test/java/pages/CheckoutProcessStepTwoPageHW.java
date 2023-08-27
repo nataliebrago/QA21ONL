@@ -21,6 +21,7 @@ public class CheckoutProcessStepTwoPageHW extends BasePageHW {
     }
 
     public void finishCheckoutProcess() {
+        logger.info("Success finish checkout process");
         finishButton.click();
     }
 }

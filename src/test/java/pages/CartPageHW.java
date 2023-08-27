@@ -22,6 +22,7 @@ public class CartPageHW extends BasePageHW {
 
     public CheckoutProcessStepOnePageHW checkoutAction() {
         checkoutButton.click();
+        logger.info("Success checkout cart");
         return new CheckoutProcessStepOnePageHW(driver);
     }
 }

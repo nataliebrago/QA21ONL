@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.configuration.ReadProperties;
 
 public class LoginPageHW extends BasePageHW {
     @FindBy(id = "user-name")
@@ -17,6 +18,7 @@ public class LoginPageHW extends BasePageHW {
 
     public LoginPageHW(WebDriver driver) {
         super(driver);
+        logger.info("Success open url - " + ReadProperties.getUrl());
     }
 
     @Override
@@ -28,6 +30,7 @@ public class LoginPageHW extends BasePageHW {
         userNameButton.sendKeys(user.getUserName());
         passwordButton.sendKeys(user.getPassword());
         loginButton.click();
+        logger.info("Success login user - " + user);
         return new ProductListPageHW(driver);
     }
 }

@@ -25,10 +25,12 @@ public class ProductListPageHW extends BasePageHW {
 
     public ProductListPageHW addToCartAction() {
         addToCartRedShirtButton.click();
+        logger.info("Success add to cart");
         return new ProductListPageHW(driver);
     }
     public CartPageHW openCartAction() {
         openCartButton.click();
+        logger.info("Success open cart");
         return new CartPageHW(driver);
     }
 }

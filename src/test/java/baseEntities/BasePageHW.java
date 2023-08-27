@@ -1,15 +1,20 @@
 package baseEntities;
 
+import helper.DataHelper;
+import lombok.Data;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import services.WaitService;
-import utils.configuration.ReadProperties;
 
+@Data
 public abstract class BasePageHW {
 
     protected WebDriver driver;
     protected WaitService waitService;
+    protected static Logger logger = LogManager.getLogger(BasePageHW.class);
 
     public BasePageHW(WebDriver driver) {
         this.driver = driver;

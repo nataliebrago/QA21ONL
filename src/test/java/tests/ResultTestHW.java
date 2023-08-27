@@ -19,6 +19,8 @@ public class ResultTestHW extends BaseTestHW {
                 .continueCheckout()
                 .finishCheckoutProcess();
 
-        Assert.assertTrue(new CheckoutProcessStepFinishPageHW(mWebDriver).isPageOpened());
+        boolean isPageOpened = new CheckoutProcessStepFinishPageHW(mWebDriver).isPageOpened();
+        logger.info("Is page opened : " + isPageOpened);
+        Assert.assertTrue(isPageOpened);
     }
 }
