@@ -4,6 +4,7 @@ import baseEntities.BasePageHW;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static com.codeborne.selenide.Selenide.$;
 
 public class ProductListPageHW extends BasePageHW {
     private final By headerTitleLocatorInventoryPageHW = By.xpath("//span[contains(@class, 'title') " +
@@ -11,8 +12,8 @@ public class ProductListPageHW extends BasePageHW {
     private final By addToCartRedShirtButtonLocator = By.id("add-to-cart-test.allthethings()-t-shirt-(red)");
     private final By openCartButtonLocator = By.id("shopping_cart_container");
 
-    public ProductListPageHW(WebDriver driver) {
-        super(driver);
+    public ProductListPageHW() {
+        super();
     }
 
     @Override
@@ -21,10 +22,10 @@ public class ProductListPageHW extends BasePageHW {
     }
 
     public WebElement getAddToCartButton() {
-        return driver.findElement(addToCartRedShirtButtonLocator);
+        return $(addToCartRedShirtButtonLocator);
     }
 
     public WebElement getOpenCartButton() {
-        return driver.findElement(openCartButtonLocator);
+        return $(openCartButtonLocator);
     }
 }

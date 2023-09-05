@@ -1,12 +1,11 @@
 package steps;
 
 import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
 import pages.CheckoutProcessStepOnePageHW;
 
 public class CartTestHW extends BaseStepHW {
-    public CartTestHW(WebDriver driver) {
-        super(driver);
+    public CartTestHW() {
+        super();
     }
 
     public CheckoutProcessStepOnePageHW navigateCheckoutHW() {

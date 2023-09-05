@@ -2,16 +2,17 @@ package pages;
 
 import baseEntities.BasePageHW;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class CheckoutProcessStepTwoPageHW extends BasePageHW {
     private final By headerTitleLocatorCheckoutTwoPageHW = By.xpath("//span[contains(@class, 'title') " +
             "and contains(text(), 'Checkout: Overview')]");
     private final By finishButtonLocator = By.id("finish");
 
-    public CheckoutProcessStepTwoPageHW(WebDriver driver) {
-        super(driver);
+    public CheckoutProcessStepTwoPageHW() {
+        super();
     }
 
     @Override
@@ -20,6 +21,6 @@ public class CheckoutProcessStepTwoPageHW extends BasePageHW {
     }
 
     public WebElement getFinishButton() {
-        return driver.findElement(finishButtonLocator);
+        return $(finishButtonLocator);
     }
 }

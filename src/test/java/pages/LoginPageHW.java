@@ -2,16 +2,17 @@ package pages;
 
 import baseEntities.BasePageHW;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPageHW extends BasePageHW {
     private final By userNameInputLocator = By.id("user-name");
     private final By passwordInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("login-button");
 
-    public LoginPageHW(WebDriver driver) {
-        super(driver);
+    public LoginPageHW() {
+        super();
     }
 
     @Override
@@ -20,15 +21,15 @@ public class LoginPageHW extends BasePageHW {
     }
 
     public WebElement getUserNameInput() {
-        return driver.findElement(userNameInputLocator);
+        return $(userNameInputLocator);
     }
 
     public WebElement getPswInput() {
-        return driver.findElement(passwordInputLocator);
+        return $(passwordInputLocator);
     }
 
     public WebElement getLoginButton() {
-        return driver.findElement(loginButtonLocator);
+        return $(loginButtonLocator);
     }
 
     public void login(String username, String psw) {

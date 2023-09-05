@@ -1,14 +1,13 @@
 package steps;
 
 import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
 import pages.CartPageHW;
 import pages.ProductListPageHW;
 
 public class ProductListStepHW extends BaseStepHW {
 
-    public ProductListStepHW(WebDriver driver) {
-        super(driver);
+    public ProductListStepHW() {
+        super();
     }
 
     public ProductListPageHW addToCartHW() {

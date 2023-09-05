@@ -2,8 +2,9 @@ package pages;
 
 import baseEntities.BasePageHW;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class CheckoutProcessStepFinishPageHW extends BasePageHW {
     private final By headerTitleLocatorCheckoutProcessStepFinishPageHW = By.xpath("//span[contains(@class, 'title') " +
@@ -11,8 +12,8 @@ public class CheckoutProcessStepFinishPageHW extends BasePageHW {
     private final By completeHeaderLocator = By.xpath("//h2[contains(@class, 'complete-header') " +
             "and contains(text(), 'Thank you for your order!')]");
 
-    public CheckoutProcessStepFinishPageHW(WebDriver driver) {
-        super(driver);
+    public CheckoutProcessStepFinishPageHW() {
+        super();
     }
 
     @Override
@@ -21,7 +22,7 @@ public class CheckoutProcessStepFinishPageHW extends BasePageHW {
     }
 
     public WebElement getCompleteHeader() {
-        return driver.findElement(completeHeaderLocator);
+        return $(completeHeaderLocator);
     }
 
 }

@@ -2,8 +2,9 @@ package pages;
 
 import baseEntities.BasePageHW;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class CheckoutProcessStepOnePageHW extends BasePageHW {
     private final By headerTitleLocatorCheckoutProcessStepOnePageHW = By.xpath("//span[contains(@class, 'title') " +
@@ -13,8 +14,8 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
     private final By zipOrPostalCodeInputLocator = By.id("postal-code");
     private final By continueButtonLocator = By.id("continue");
 
-    public CheckoutProcessStepOnePageHW(WebDriver driver) {
-        super(driver);
+    public CheckoutProcessStepOnePageHW() {
+        super();
     }
 
     @Override
@@ -23,19 +24,19 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
     }
 
     public WebElement getFirstNameInputField() {
-        return driver.findElement(firstNameInputLocator);
+        return $(firstNameInputLocator);
     }
 
     public WebElement getLastNameInputField() {
-        return driver.findElement(lastNameInputLocator);
+        return $(lastNameInputLocator);
     }
 
     public WebElement getPostalCodeInputField() {
-        return driver.findElement(zipOrPostalCodeInputLocator);
+        return $(zipOrPostalCodeInputLocator);
     }
 
     public WebElement getContinueButton() {
-        return driver.findElement(continueButtonLocator);
+        return $(continueButtonLocator);
     }
 
     public void setFirstName(String value) {
