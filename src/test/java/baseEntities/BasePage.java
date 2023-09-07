@@ -11,6 +11,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        this.waitService = new WaitService(driver);
     }
 
     public void openPageByUrl(String pagePath) {
