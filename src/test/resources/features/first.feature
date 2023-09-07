@@ -19,3 +19,15 @@ Feature: Начальный тест для изучение Cucumber
     And страница логина открыта
     Then поле username отображается
     And поле password отображается
+
+  Scenario: Использование But
+    Given открыт браузер
+    And страница логина открыта
+    Then поле username отображается
+    But поле password не отображается
+
+  Scenario:
+    Given открыт браузер
+    * страница логина открыта
+    * поле username отображается
+    * поле password отображается

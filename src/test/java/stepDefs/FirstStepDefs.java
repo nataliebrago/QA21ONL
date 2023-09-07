@@ -1,10 +1,12 @@
 package stepDefs;
 
+import factory.BrowserFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.LoginPage;
+import utils.configuration.ReadProperties;
 
 import java.util.Map;
 
@@ -13,12 +15,12 @@ public class FirstStepDefs {
 
     @Given("открыт браузер")
     public void startBrowser() {
-        //driver = new BrowserFactory().getDriver();
+        driver = new BrowserFactory().getDriver();
     }
 
     @When("страница логина открыта")
     public void openLoginPage() {
-        //driver.get(ReadProperties.getUrl());
+        driver.get(ReadProperties.getUrl());
     }
 
     @Then("поле username отображается")

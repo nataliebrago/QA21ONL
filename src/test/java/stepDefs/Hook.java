@@ -7,8 +7,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Step;
 
-public class Hook extends BaseTest {
-    private BaseTest baseTest;
+ public class Hook extends BaseTest {
+    public BaseTest baseTest;
 
     public Hook(BaseTest baseTest) {
         this.baseTest = baseTest;
