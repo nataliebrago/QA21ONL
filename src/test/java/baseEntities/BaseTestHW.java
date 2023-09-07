@@ -25,27 +25,27 @@ public class BaseTestHW {
     @BeforeMethod
     public void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         org.apache.log4j.BasicConfigurator.configure();
 
+        initSteps();
+        setConfigurationProp();
+        open("/");
+        logger.info("Browser is started");
+    }
+        private void setConfigurationProp() {
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.timeout = 8000;
-        //Configuration.browser = Browsers.CHROME;
         Configuration.browserSize = "1920x1080";
         Configuration.fastSetValue = true;
         Configuration.headless = false;
-        //Configuration.assertionMode = SOFT;
-
+    }
+    private void initSteps() {
         mLoginStepHW = new LoginStepHW();
         mProductListStepHW = new ProductListStepHW();
         mCartTestHW = new CartTestHW();
         mCheckoutProcessStepOneTest = new CheckoutProcessStepOneTest();
         mCheckoutProcessStepTwoTest = new CheckoutProcessStepTwoTest();
         mCheckoutProcessFinishTest = new CheckoutProcessFinishTest();
-
-        open("/");
-
-        logger.info("Browser is started");
     }
 
     @AfterMethod
