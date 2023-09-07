@@ -1,14 +1,18 @@
 package baseEntities;
 
-import factory.BrowserFactory;
-import org.openqa.selenium.WebDriver;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import steps.*;
 import utils.configuration.ReadProperties;
+import org.apache.log4j.Logger;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTestHW {
-    protected WebDriver mWebDriver;
     protected LoginStepHW mLoginStepHW;
     protected ProductListStepHW mProductListStepHW;
     protected CartTestHW mCartTestHW;
@@ -16,22 +20,36 @@ public class BaseTestHW {
     protected CheckoutProcessStepTwoTest mCheckoutProcessStepTwoTest;
     protected CheckoutProcessFinishTest mCheckoutProcessFinishTest;
 
+    static Logger logger = Logger.getLogger(BaseTestHW.class);
+
     @BeforeMethod
     public void setUp() {
-        BrowserFactory browserFactory = new BrowserFactory();
-        mWebDriver = browserFactory.getDriver();
-        mLoginStepHW = new LoginStepHW(mWebDriver);
-        mProductListStepHW = new ProductListStepHW(mWebDriver);
-        mCartTestHW = new CartTestHW(mWebDriver);
-        mCheckoutProcessStepOneTest = new CheckoutProcessStepOneTest(mWebDriver);
-        mCheckoutProcessStepTwoTest = new CheckoutProcessStepTwoTest(mWebDriver);
-        mCheckoutProcessFinishTest = new CheckoutProcessFinishTest(mWebDriver);
-        mWebDriver.get(ReadProperties.getUrl());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        org.apache.log4j.BasicConfigurator.configure();
+
+        initSteps();
+        setConfigurationProp();
+        open("/");
+        logger.info("Browser is started");
+    }
+        private void setConfigurationProp() {
+        Configuration.baseUrl = ReadProperties.getUrl();
+        Configuration.timeout = 8000;
+        Configuration.browserSize = "1920x1080";
+        Configuration.fastSetValue = true;
+        Configuration.headless = false;
+    }
+    private void initSteps() {
+        mLoginStepHW = new LoginStepHW();
+        mProductListStepHW = new ProductListStepHW();
+        mCartTestHW = new CartTestHW();
+        mCheckoutProcessStepOneTest = new CheckoutProcessStepOneTest();
+        mCheckoutProcessStepTwoTest = new CheckoutProcessStepTwoTest();
+        mCheckoutProcessFinishTest = new CheckoutProcessFinishTest();
     }
 
     @AfterMethod
     public void tearDown() {
-        mWebDriver.quit();
+        closeWebDriver();
     }
 }
-
