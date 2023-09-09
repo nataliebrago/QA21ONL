@@ -1,23 +1,26 @@
 package steps;
 
-import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
-import pages.CartPageHW;
+import baseEntities.BaseTestHW;
+import io.cucumber.java.en.When;
 import pages.ProductListPageHW;
 
-public class ProductListStepHW extends BaseStepHW {
+public class ProductListStepHW extends BaseTestHW {
 
-    public ProductListStepHW(WebDriver driver) {
-        super(driver);
+    private BaseTestHW baseTest;
+    private ProductListPageHW productListPageHW;
+
+    public ProductListStepHW(BaseTestHW baseTest) {
+        this.baseTest = baseTest;
+        productListPageHW = new ProductListPageHW(driver);
     }
 
-    public ProductListPageHW addToCartHW() {
-        mProductListPageHW.addToCartRedShirtButton.click();
-        return mProductListPageHW;
+    @When("user adds one item to the cart")
+    public void addToCartHW() {
+        productListPageHW.addToCartRedShirtButton.click();
     }
 
-    public CartPageHW navigateToCartHW() {
-        mProductListPageHW.openCartButton.click();
-        return mCartPageHW;
+    @When("user opens the cart")
+    public void navigateToCartHW() {
+        productListPageHW.openCartButton.click();
     }
 }

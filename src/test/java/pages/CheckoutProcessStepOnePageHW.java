@@ -15,7 +15,7 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
     @FindBy(id = "postal-code")
     public WebElement zipOrPostalCodeInput;
     @FindBy(id = "continue")
-    public WebElement continueButton;
+    public static WebElement continueButton;
 
     public CheckoutProcessStepOnePageHW(WebDriver driver) {
         super(driver);
@@ -38,7 +38,7 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
         zipOrPostalCodeInput.sendKeys(value);
     }
 
-    public void setInformationAboutPerson() {
+    public static void setInformationAboutPerson() {
         setFirstName("Nataly");
         setLastName("Brago");
         setPostalCode("224024");

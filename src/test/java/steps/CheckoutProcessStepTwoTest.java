@@ -1,16 +1,20 @@
 package steps;
 
-import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
-import pages.CheckoutProcessStepFinishPageHW;
+import baseEntities.BaseTestHW;
+import io.cucumber.java.en.Then;
+import pages.CheckoutProcessStepTwoPageHW;
 
-public class CheckoutProcessStepTwoTest extends BaseStepHW {
-    public CheckoutProcessStepTwoTest(WebDriver driver) {
-        super(driver);
+public class CheckoutProcessStepTwoTest extends BaseTestHW {
+    private BaseTestHW baseTest;
+    private CheckoutProcessStepTwoPageHW checkoutProcessStepTwoPageHW;
+
+    public CheckoutProcessStepTwoTest (BaseTestHW baseTest) {
+        this.baseTest = baseTest;
+        checkoutProcessStepTwoPageHW = new CheckoutProcessStepTwoPageHW(driver);
     }
 
-    public CheckoutProcessStepFinishPageHW finishCheckoutProcess() {
-        mCheckoutProcessStepTwoPageHW.finishButtonLocator.click();
-        return mCheckoutProcessStepFinishPageHW;
+    @Then("user finishes checkout")
+    public void finishCheckoutProcess() {
+        CheckoutProcessStepTwoPageHW.finishButtonLocator.click();
     }
 }
