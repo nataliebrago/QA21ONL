@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.configuration.ReadProperties;
-
 import java.time.Duration;
 
 public class BrowserFactory {
@@ -40,10 +39,8 @@ public class BrowserFactory {
         return this.driver;
     }
 
-
     public ChromeOptions getOptions() {
         ChromeOptions chromeoptions = new ChromeOptions();
-
         chromeoptions.setHeadless(false);
         chromeoptions.addArguments("--disable-gpu");
         chromeoptions.addArguments("--ignore-certificate-errors");
@@ -63,6 +60,5 @@ public class BrowserFactory {
         firefoxOptions.addArguments("--start-maximized");
         firefoxOptions.addArguments("--incognito");
         return firefoxOptions;
-
     }
 }

@@ -22,6 +22,6 @@ public class Hook extends BaseTestHW {
         if (scenario.isFailed()) {
             System.out.println("Attach screenshot");
         }
-        //baseTest.driver.quit();
+        baseTest.driver.quit();
     }
 }

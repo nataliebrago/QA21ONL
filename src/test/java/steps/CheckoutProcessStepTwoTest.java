@@ -15,6 +15,6 @@ public class CheckoutProcessStepTwoTest extends BaseTestHW {
 
     @Then("user clicks the finish button")
     public void finishCheckoutProcess() {
-        CheckoutProcessStepTwoPageHW.finishButtonLocator.click();
+        checkoutProcessStepTwoPageHW.finishButtonLocator.click();
     }
 }
