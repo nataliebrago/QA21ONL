@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class CartPageHW extends BasePageHW {
 
     @FindBy (id = "checkout")
-    public WebElement checkoutButtonLocator;
+    public static WebElement checkoutButtonLocator;
 
     public CartPageHW(WebDriver driver) {
         super(driver);

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutProcessStepFinishPageHW extends BasePageHW {
     @FindBy (xpath = "//span[contains(@class, 'title') and contains(text(), 'Checkout: Complete!')]")
-    public WebElement completeHeader;
+    public static WebElement completeHeader;
 
     public CheckoutProcessStepFinishPageHW(WebDriver driver) {
         super(driver);

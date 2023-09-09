@@ -9,11 +9,11 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutProcessStepOnePageHW extends BasePageHW {
 
     @FindBy(id = "first-name")
-    public WebElement firstNameInput;
+    public static WebElement firstNameInput;
     @FindBy(id = "last-name")
-    public WebElement lastNameInput;
+    public static WebElement lastNameInput;
     @FindBy(id = "postal-code")
-    public WebElement zipOrPostalCodeInput;
+    public static WebElement zipOrPostalCodeInput;
     @FindBy(id = "continue")
     public static WebElement continueButton;
 
@@ -26,15 +26,15 @@ public class CheckoutProcessStepOnePageHW extends BasePageHW {
         return By.xpath("//span[contains(@class, 'title') and contains(text(), 'Checkout: Your Information')]");
     }
 
-    public void setFirstName(String value) {
+    public static void setFirstName(String value) {
         firstNameInput.sendKeys(value);
     }
 
-    public void setLastName(String value) {
+    public static void setLastName(String value) {
         lastNameInput.sendKeys(value);
     }
 
-    public void setPostalCode(String value) {
+    public static void setPostalCode(String value) {
         zipOrPostalCodeInput.sendKeys(value);
     }
 

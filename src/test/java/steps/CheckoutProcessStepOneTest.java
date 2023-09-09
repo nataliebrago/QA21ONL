@@ -14,7 +14,7 @@ public class CheckoutProcessStepOneTest extends BaseTestHW {
         checkoutProcessStepOnePageHW = new CheckoutProcessStepOnePageHW(driver);
     }
     @When("user fills in first name {} last name {} and postal code {}")
-    public void fillingInWithValidDataHW() {
+    public void fillingInWithValidDataHW(String firstName, String lastName, String postalCode) {
         CheckoutProcessStepOnePageHW.setInformationAboutPerson();
     }
     @When("user clicks continue button")
