@@ -24,7 +24,7 @@ public class LoginStepHW extends BaseTestHW {
         driver.get(ReadProperties.getUrl());
     }
 
-    @When("user logs into the site with username {} and password {}")
+    @When("user logs in to the site with username {} and password {}")
     public void loginHW(String username, String password) {
         loginPagehw = new LoginPageHW(driver);
         loginPagehw.login(username, password);

@@ -13,7 +13,7 @@ public class CheckoutProcessFinishTest extends BaseTestHW {
         checkoutProcessStepFinishPageHW = new CheckoutProcessStepFinishPageHW(driver);
     }
 
-        @Then("user completes the checkout clicking on the Finish button")
+        @Then("the message is displayed after checkout \"Thank you for your order!\"")
         public void completeHeaderIsDisplayed() {
             CheckoutProcessStepFinishPageHW.completeHeader.isDisplayed();
         }

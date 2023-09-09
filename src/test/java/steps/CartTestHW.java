@@ -14,7 +14,7 @@ public class CartTestHW extends BaseTestHW {
         cartPagehw = new CartPageHW(driver);
     }
 
-    @When("user clicks checkout")
+    @When("user clicks checkout button")
     public void navigateCheckoutHW() {
         CartPageHW.checkoutButtonLocator.click();
     }

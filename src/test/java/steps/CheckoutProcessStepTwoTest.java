@@ -13,7 +13,7 @@ public class CheckoutProcessStepTwoTest extends BaseTestHW {
         checkoutProcessStepTwoPageHW = new CheckoutProcessStepTwoPageHW(driver);
     }
 
-    @Then("user finishes checkout")
+    @Then("user clicks the finish button")
     public void finishCheckoutProcess() {
         CheckoutProcessStepTwoPageHW.finishButtonLocator.click();
     }
