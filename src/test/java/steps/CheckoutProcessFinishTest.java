@@ -1,16 +1,20 @@
 package steps;
 
-import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
+import baseEntities.BaseTestHW;
+import io.cucumber.java.en.Then;
 import pages.CheckoutProcessStepFinishPageHW;
 
-public class CheckoutProcessFinishTest extends BaseStepHW {
-    public CheckoutProcessFinishTest(WebDriver driver) {
-        super(driver);
+public class CheckoutProcessFinishTest extends BaseTestHW {
+    private BaseTestHW baseTest;
+    private CheckoutProcessStepFinishPageHW checkoutProcessStepFinishPageHW;
+
+    public CheckoutProcessFinishTest(BaseTestHW baseTest) {
+        this.baseTest = baseTest;
+        checkoutProcessStepFinishPageHW = new CheckoutProcessStepFinishPageHW(driver);
     }
 
-    public CheckoutProcessStepFinishPageHW completeHeaderIsDisplayed() {
-        mCheckoutProcessStepFinishPageHW.getCompleteHeader().isDisplayed();
-        return mCheckoutProcessStepFinishPageHW;
+    @Then("the message is displayed after checkout \"Thank you for your order!\"")
+    public void completeHeaderIsDisplayed() {
+        checkoutProcessStepFinishPageHW.completeHeader.isDisplayed();
     }
 }

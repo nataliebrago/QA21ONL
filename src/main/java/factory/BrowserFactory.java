@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.configuration.ReadProperties;
+import java.time.Duration;
 
 public class BrowserFactory {
     private WebDriver driver = null;
@@ -18,7 +19,6 @@ public class BrowserFactory {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
                 WebDriverManager.getInstance(driverManagerType).setup();
-
                 driver = new ChromeDriver(getOptions());
                 break;
             case "firefox":
@@ -34,15 +34,13 @@ public class BrowserFactory {
 
     public WebDriver getDriver() {
         driver.manage().window().maximize();
-
         driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         return this.driver;
     }
 
-
     public ChromeOptions getOptions() {
         ChromeOptions chromeoptions = new ChromeOptions();
-
         chromeoptions.setHeadless(false);
         chromeoptions.addArguments("--disable-gpu");
         chromeoptions.addArguments("--ignore-certificate-errors");
@@ -62,6 +60,5 @@ public class BrowserFactory {
         firefoxOptions.addArguments("--start-maximized");
         firefoxOptions.addArguments("--incognito");
         return firefoxOptions;
-
     }
 }

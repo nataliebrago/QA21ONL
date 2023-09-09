@@ -1,22 +1,26 @@
 package steps;
 
-import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
+import baseEntities.BaseTestHW;
+import io.cucumber.java.en.When;
 import pages.CheckoutProcessStepOnePageHW;
-import pages.CheckoutProcessStepTwoPageHW;
 
-public class CheckoutProcessStepOneTest extends BaseStepHW {
-    public CheckoutProcessStepOneTest(WebDriver driver) {
-        super(driver);
+public class CheckoutProcessStepOneTest extends BaseTestHW {
+
+    private BaseTestHW baseTest;
+    private CheckoutProcessStepOnePageHW checkoutProcessStepOnePageHW;
+
+    public CheckoutProcessStepOneTest(BaseTestHW baseTest) {
+        this.baseTest = baseTest;
+        checkoutProcessStepOnePageHW = new CheckoutProcessStepOnePageHW(driver);
     }
 
-    public CheckoutProcessStepOnePageHW fillingInWithValidDataHW() {
-        mCheckoutProcessStepOnePageHW.setInformationAboutPerson();
-        return mCheckoutProcessStepOnePageHW;
+    @When("user fills in first name {} last name {} and postal code {}")
+    public void fillingInWithValidDataHW(String firstName, String lastName, String postalCode) {
+        checkoutProcessStepOnePageHW.setInformationAboutPerson(firstName, lastName, postalCode);
     }
 
-    public CheckoutProcessStepTwoPageHW continueCheckout() {
-        mCheckoutProcessStepOnePageHW.getContinueButton().click();
-        return mCheckoutProcessStepTwoPageHW;
+    @When("user clicks continue button")
+    public void continueCheckout() {
+        checkoutProcessStepOnePageHW.continueButton.click();
     }
 }

@@ -1,58 +1,39 @@
 package pages;
 
 import baseEntities.BasePageHW;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class CheckoutProcessStepOnePageHW extends BasePageHW {
-    private final By headerTitleLocatorCheckoutProcessStepOnePageHW = By.xpath("//span[contains(@class, 'title') " +
-            "and contains(text(), 'Checkout: Your Information')]");
-    private final By firstNameInputLocator = By.id("first-name");
-    private final By lastNameInputLocator = By.id("last-name");
-    private final By zipOrPostalCodeInputLocator = By.id("postal-code");
-    private final By continueButtonLocator = By.id("continue");
+
+    @FindBy(id = "first-name")
+    public static WebElement firstNameInput;
+    @FindBy(id = "last-name")
+    public static WebElement lastNameInput;
+    @FindBy(id = "postal-code")
+    public static WebElement zipOrPostalCodeInput;
+    @FindBy(id = "continue")
+    public static WebElement continueButton;
 
     public CheckoutProcessStepOnePageHW(WebDriver driver) {
         super(driver);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLocatorCheckoutProcessStepOnePageHW;
+    public static void setFirstName(String value) {
+        firstNameInput.sendKeys(value);
     }
 
-    public WebElement getFirstNameInputField() {
-        return driver.findElement(firstNameInputLocator);
+    public static void setLastName(String value) {
+        lastNameInput.sendKeys(value);
     }
 
-    public WebElement getLastNameInputField() {
-        return driver.findElement(lastNameInputLocator);
+    public static void setPostalCode(String value) {
+        zipOrPostalCodeInput.sendKeys(value);
     }
-
-    public WebElement getPostalCodeInputField() {
-        return driver.findElement(zipOrPostalCodeInputLocator);
-    }
-
-    public WebElement getContinueButton() {
-        return driver.findElement(continueButtonLocator);
-    }
-
-    public void setFirstName(String value) {
-        getFirstNameInputField().sendKeys(value);
-    }
-
-    public void setLastName(String value) {
-        getLastNameInputField().sendKeys(value);
-    }
-
-    public void setPostalCode(String value) {
-        getPostalCodeInputField().sendKeys(value);
-    }
-
-    public void setInformationAboutPerson() {
-        setFirstName("Nataly");
-        setLastName("Brago");
-        setPostalCode("224024");
+    public static void setInformationAboutPerson(String firstName, String lastName, String postalCode) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setPostalCode(postalCode);
     }
 }

@@ -1,16 +1,21 @@
 package steps;
 
-import baseEntities.BaseStepHW;
-import org.openqa.selenium.WebDriver;
-import pages.CheckoutProcessStepOnePageHW;
+import baseEntities.BaseTestHW;
+import io.cucumber.java.en.When;
+import pages.CartPageHW;
 
-public class CartTestHW extends BaseStepHW {
-    public CartTestHW(WebDriver driver) {
-        super(driver);
+public class CartTestHW extends BaseTestHW {
+
+    private BaseTestHW baseTest;
+    private CartPageHW cartPagehw;
+
+    public CartTestHW(BaseTestHW baseTest) {
+        this.baseTest = baseTest;
+        cartPagehw = new CartPageHW(driver);
     }
 
-    public CheckoutProcessStepOnePageHW navigateCheckoutHW() {
-        mCartPageHW.getCheckoutButton().click();
-        return mCheckoutProcessStepOnePageHW;
+    @When("user clicks checkout button")
+    public void navigateCheckoutHW() {
+        CartPageHW.checkoutButtonLocator.click();
     }
 }

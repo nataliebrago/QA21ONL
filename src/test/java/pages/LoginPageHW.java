@@ -1,39 +1,25 @@
 package pages;
 
 import baseEntities.BasePageHW;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPageHW extends BasePageHW {
-    private final By userNameInputLocator = By.id("user-name");
-    private final By passwordInputLocator = By.id("password");
-    private final By loginButtonLocator = By.id("login-button");
+    @FindBy(id = "user-name")
+    public WebElement userNameButton;
+    @FindBy(id = "password")
+    public WebElement passwordButton;
+    @FindBy(id = "login-button")
+    public WebElement loginButton;
 
     public LoginPageHW(WebDriver driver) {
         super(driver);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return loginButtonLocator;
-    }
-
-    public WebElement getUserNameInput() {
-        return driver.findElement(userNameInputLocator);
-    }
-
-    public WebElement getPswInput() {
-        return driver.findElement(passwordInputLocator);
-    }
-
-    public WebElement getLoginButton() {
-        return driver.findElement(loginButtonLocator);
-    }
-
     public void login(String username, String psw) {
-        getUserNameInput().sendKeys(username);
-        getPswInput().sendKeys(psw);
-        getLoginButton().click();
+        userNameButton.sendKeys(username);
+        passwordButton.sendKeys(psw);
+        loginButton.click();
     }
 }
