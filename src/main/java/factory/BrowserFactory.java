@@ -2,6 +2,8 @@ package factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,24 +14,27 @@ import utils.configuration.ReadProperties;
 import java.time.Duration;
 
 public class BrowserFactory {
+    Logger logger = LogManager.getLogger(BrowserFactory.class);
+
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
 
     public BrowserFactory() {
         switch (ReadProperties.browserName().toLowerCase()) {
-            case "chrome":
+            case "chrome" :
                 driverManagerType = DriverManagerType.CHROME;
-                WebDriverManager.getInstance(driverManagerType).setup();
+                WebDriverManager.getInstance(driverManagerType).clearDriverCache().setup();
 
-                driver = new ChromeDriver(getOptions());
+                driver = new ChromeDriver(getChromeOptions());
                 break;
             case "firefox":
                 driverManagerType = DriverManagerType.FIREFOX;
                 WebDriverManager.getInstance(driverManagerType).setup();
+
                 driver = new FirefoxDriver(getFirefoxOptions());
                 break;
             default:
-                System.out.println("Browser" + ReadProperties.browserName() + "is not supported");
+                logger.error("Browser " + ReadProperties.browserName() + " is not supported.");
                 break;
         }
     }
@@ -38,33 +43,32 @@ public class BrowserFactory {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+
         return this.driver;
     }
 
+    public ChromeOptions getChromeOptions() {
+        ChromeOptions chromeOptions = new ChromeOptions();
 
-    public ChromeOptions getOptions() {
-        ChromeOptions chromeoptions = new ChromeOptions();
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--silent");
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--incognito");
+        //chromeOptions.addArguments("--headless=new");
 
-        chromeoptions.setHeadless(false);
-        chromeoptions.addArguments("--disable-gpu");
-        chromeoptions.addArguments("--ignore-certificate-errors");
-        chromeoptions.addArguments("--silent");
-        chromeoptions.addArguments("--start-maximized");
-        chromeoptions.addArguments("--incognito");
-        return chromeoptions;
-
+        return chromeOptions;
     }
 
     public FirefoxOptions getFirefoxOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
 
-        firefoxOptions.setHeadless(false);
         firefoxOptions.addArguments("--disable-gpu");
         firefoxOptions.addArguments("--ignore-certificate-errors");
         firefoxOptions.addArguments("--silent");
         firefoxOptions.addArguments("--start-maximized");
         firefoxOptions.addArguments("--incognito");
-        return firefoxOptions;
 
+        return firefoxOptions;
     }
 }
