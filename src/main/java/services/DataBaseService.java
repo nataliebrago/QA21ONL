@@ -10,7 +10,7 @@ public class DataBaseService {
 
     static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     static final String USER = "postgres";
-    static final String PASS = "postgres";
+    static final String PASS = "1234";
 
     Connection connection = null;
     Statement statement = null;
