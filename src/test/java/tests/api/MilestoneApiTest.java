@@ -7,6 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import models.Milestone;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
+import services.MilestoneService;
 import utils.Endpoints;
 
 import static io.restassured.RestAssured.given;
@@ -16,9 +17,9 @@ public class MilestoneApiTest extends BaseApiTest {
     private final int projectId = 9;
 
     @Test
-    public void getMilestone(){
+    public void getMilestone() {
         RequestSpecification mRequestSpecification = given()
-                .pathParam("project_id",projectId)
+                .pathParam("project_id", projectId)
                 .when();
 
         Response response = mRequestSpecification
@@ -32,10 +33,8 @@ public class MilestoneApiTest extends BaseApiTest {
 
     @Test
     public void addMilestone() {
-        Milestone mMilestone = Milestone.builder()
-                .name("Milestone_for_project_id = " + projectId)
-                .description("Description for Milestone_for_project_id = " + projectId)
-                .build();
+        MilestoneService milestoneService = new MilestoneService();
+        Milestone mMilestone = milestoneService.findAllMilestones().get(0);
 
         RequestSpecification mRequestSpecification = given()
                 .body(mMilestone, ObjectMapperType.GSON)
@@ -54,35 +53,32 @@ public class MilestoneApiTest extends BaseApiTest {
 
 
     @Test
-    public void updateMilestone(){
+    public void updateMilestone() {
         int milestoneId = 9;
 
-        Milestone mMilestone = Milestone.builder()
-                .name("Update Milestone_for_project_id = " + projectId)
-                .description("Update Description for Milestone_for_project_id = " + projectId)
-                .build();
+        MilestoneService milestoneService = new MilestoneService();
+        Milestone mMilestone = milestoneService.findAllMilestones().get(1);
 
         RequestSpecification mRequestSpecification = given()
                 .body(mMilestone, ObjectMapperType.GSON)
-                .pathParam("milestone_id",milestoneId)
+                .pathParam("milestone_id", milestoneId)
                 .when();
-
 
         Response response = mRequestSpecification.post(Endpoints.UPDATE_MILESTONE_ENDPOINT)
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK)
-                .body("name",is(mMilestone.getName()))
-                .body("description",is(mMilestone.getDescription()))
+                .body("name", is(mMilestone.getName()))
+                .body("description", is(mMilestone.getDescription()))
                 .extract()
                 .response();
     }
 
-   @Test
-    public void deleteMilestone(){
+    @Test
+    public void deleteMilestone() {
         int milestoneId = 8;
-                given()
-                .pathParam("milestone_id",milestoneId)
+        given()
+                .pathParam("milestone_id", milestoneId)
                 .when()
                 .post(Endpoints.DELETE_MILESTONE_ENDPOINT)
                 .then()
